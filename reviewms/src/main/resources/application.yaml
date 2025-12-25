@@ -4,12 +4,15 @@ server:
 spring:
   application:
     name: reviewms
-  h2:
-    console:
-      enabled: true
+
   datasource:
-    url: jdbc:h2:mem:test
+    url: jdbc:postgresql://localhost:5432/review
+    username: postgres
+    password: suvam123
+
   jpa:
     show-sql: true
+    database: POSTGRESQL
     hibernate:
       ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
