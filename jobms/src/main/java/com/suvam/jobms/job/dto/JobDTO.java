@@ -1,16 +1,20 @@
 package com.suvam.jobms.job.dto;
 
-import com.suvam.jobms.job.Job;
 import com.suvam.jobms.job.external.Company;
+import com.suvam.jobms.job.external.Review;
 
-public class JobWithCompanyDTO {
+import java.util.List;
+
+public class JobDTO {
     private Long id;
     private String title;
     private String description;
     private String minSalary;
     private String maxSalary;
     private String location;
+
     private Company company;
+    private List<Review> reviews;
 
     public Long getId() {
         return id;
@@ -66,5 +70,13 @@ public class JobWithCompanyDTO {
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }

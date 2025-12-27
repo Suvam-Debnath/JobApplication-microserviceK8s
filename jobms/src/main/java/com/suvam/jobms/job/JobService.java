@@ -1,14 +1,14 @@
 package com.suvam.jobms.job;
 
-import com.suvam.jobms.job.dto.JobWithCompanyDTO;
+import com.suvam.jobms.job.dto.JobDTO;
 
 import java.util.List;
 
 public interface JobService {
-    List<JobWithCompanyDTO> findAll();
+    List<JobDTO> findAll();
     void createJob(Job job);
 
-    JobWithCompanyDTO getJobById(Long id);
+    JobDTO getJobById(Long id);
 
     boolean deleteJobById(Long id);
 
