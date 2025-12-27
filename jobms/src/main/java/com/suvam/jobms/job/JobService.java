@@ -1,9 +1,11 @@
 package com.suvam.jobms.job;
 
+import com.suvam.jobms.job.dto.JobWithCompanyDTO;
+
 import java.util.List;
 
 public interface JobService {
-    List<Job> findAll();
+    List<JobWithCompanyDTO> findAll();
     void createJob(Job job);
 
     Job getJobById(Long id);
