@@ -14,6 +14,14 @@ spring:
       ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+  #config server
+  config:
+    import:
+      optional:configserver:http://localhost:8888
+  profiles:
+    active:
+      dev
+
 server:
   port: 8082
 
