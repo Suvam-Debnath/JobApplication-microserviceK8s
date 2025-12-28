@@ -22,6 +22,18 @@ spring:
           predicates:
             - Path=/reviews/**
 
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        cloud:
+          gateway:
+            route:
+              RouteDefinitionLocator: INFO
+            gateway: TRACE
+
+
 #Eureka
 eureka:
   client:
