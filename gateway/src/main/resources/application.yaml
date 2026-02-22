@@ -8,17 +8,17 @@ spring:
     gateway:
       routes:
         - id: companyms
-          uri: http://localhost:8081
+          uri: lb://companyms
           predicates:
             - Path=/companies/**
 
         - id: jobms
-          uri: http://localhost:8082
+          uri: lb://jobms-dev
           predicates:
             - Path=/jobs/**
 
         - id: reviewms
-          uri: http://localhost:8083
+          uri: lb://reviewms
           predicates:
             - Path=/reviews/**
 
