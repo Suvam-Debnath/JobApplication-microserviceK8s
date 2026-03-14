@@ -33,8 +33,38 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
 
-#Zipkin
 management:
+  # Zipkin / Micrometer Tracing
   tracing:
     sampling:
       probability: 1.0
+
+  # Enable Circuit Breaker health indicator
+  health:
+    circuitbreakers:
+      enabled: true
+
+  # Actuator endpoints
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+  # Show full health details
+  endpoint:
+    health:
+      show-details: always
+
+# Circuit Breaker
+resilience4j:
+  circuitbreaker:
+    instances:
+      companyBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        slidingWindowType: count_based
