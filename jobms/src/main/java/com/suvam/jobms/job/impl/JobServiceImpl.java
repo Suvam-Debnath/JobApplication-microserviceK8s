@@ -10,6 +10,8 @@ import com.suvam.jobms.job.external.Company;
 import com.suvam.jobms.job.external.Review;
 import com.suvam.jobms.job.mapper.JobMapper;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,7 +38,9 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    @CircuitBreaker(name="companyBreaker", fallbackMethod = "companyBreakerFallback")
+    //@CircuitBreaker(name="companyBreaker", fallbackMethod = "companyBreakerFallback")
+    //@Retry(name="companyBreaker", fallbackMethod = "companyBreakerFallback")
+    @RateLimiter(name="companyBreaker")
     public List<JobDTO> findAll() {
         List<Job> jobs = jobRepository.findAll();
         List<JobDTO> jobDTOS = new ArrayList<>();
